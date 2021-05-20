@@ -1,7 +1,9 @@
 {
   "name": "express-server-template",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "WOODI",
+  "license": "GNU 2.0",
   "scripts": {
     "start": "node ./bin/www"
   },
