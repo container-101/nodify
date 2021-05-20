@@ -2,8 +2,9 @@
 <h1>사용법</h1>
 <pre>
 1.git clone repository_name
-2.yarn install
-3.yarn start
+2.git checkout develop
+3.yarn install
+4.yarn start
 </pre>
 
 <h1>코드 작성전 유의사항</h1>
