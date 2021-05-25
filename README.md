@@ -1,4 +1,5 @@
 # nodejs-template
+
 <h1>사용법</h1>
 <pre>
 1.git clone repository_name
@@ -20,16 +21,24 @@
 2. 아래 내용을 붙여넣기
 
 {
-    // Set the default
-    "editor.formatOnSave": false,
-    // Enable per-language
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
-    "editor.codeActionsOnSave": {
-        // For ESLint
-        "source.fixAll.eslint": true
-    }
+// Set the default
+"editor.formatOnSave": false,
+// Enable per-language
+"[javascript]": {
+"editor.formatOnSave": true
+},
+"editor.codeActionsOnSave": {
+// For ESLint
+"source.fixAll.eslint": true
 }
+}
+
 </pre>
 
+<h1>코드 작성 방법</h1>
+<pre>
+1. /routes/api를 들어간다
+2. menu, store, user, userinfo 폴더 각각에 들어있는 controller.js파일에다가 코드를 정의한다
+3. postman으로 잘 작동하는지 판단한다.
+*. 필요시 DB 정의해야함. 팀플시 파일이름 변경, 변수이름 변경 상의할 것
+</pre>
