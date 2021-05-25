@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../../../models/user');
 
 /*
-    POST /api/user/signup
+    POST /api/store/signup
     {
         username,
         password
@@ -63,7 +63,7 @@ exports.postSignUp = (req, res) => {
 };
 
 /*
-    POST /api/user/signin
+    POST /api/store/signin
     {
         username,
         password
@@ -127,4 +127,70 @@ exports.postSignIn = (req, res) => {
 
   // find the user
   User.findOneByUsername(username).then(check).then(respond).catch(onError);
+};
+
+/*
+    GET /api/store/orderlist
+*/
+
+exports.getOrderList = (req, res) => {
+  console.log(req, res);
+  console.log('do something here');
+  res.json({
+    message: 'success',
+  });
+};
+
+/*
+    GET /api/store/soldlist
+*/
+
+exports.getSoldList = (req, res) => {
+  console.log(req, res);
+  console.log('do something here');
+  res.json({
+    message: 'success',
+  });
+};
+
+/*
+      POST /api/menu/ordermanage
+      {
+          need specification
+      }
+*/
+
+exports.postOrderManage = (req, res) => {
+  console.log(req, res);
+  console.log('do something here');
+  res.json({
+    message: 'success',
+  });
+};
+
+/*
+    GET /api/store/storeinfo
+*/
+
+exports.getStoreInfo = (req, res) => {
+  console.log(req, res);
+  console.log('do something here');
+  res.json({
+    message: 'success',
+  });
+};
+
+/*
+    PUT /api/menu/storeinfo
+    {
+        need specification
+    }
+*/
+
+exports.putStoreInfo = (req, res) => {
+  console.log(req, res);
+  console.log('do something here');
+  res.json({
+    message: 'success',
+  });
 };
