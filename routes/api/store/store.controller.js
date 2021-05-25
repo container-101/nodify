@@ -134,7 +134,6 @@ exports.postSignIn = (req, res) => {
 */
 
 exports.getOrderList = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   res.json({
     message: 'success',
@@ -146,7 +145,6 @@ exports.getOrderList = (req, res) => {
 */
 
 exports.getSoldList = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   res.json({
     message: 'success',
@@ -161,7 +159,6 @@ exports.getSoldList = (req, res) => {
 */
 
 exports.postOrderManage = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   res.json({
     message: 'success',
@@ -173,7 +170,6 @@ exports.postOrderManage = (req, res) => {
 */
 
 exports.getStoreInfo = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   res.json({
     message: 'success',
@@ -188,7 +184,6 @@ exports.getStoreInfo = (req, res) => {
 */
 
 exports.putStoreInfo = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   res.json({
     message: 'success',

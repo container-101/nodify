@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const controller = require('./user.controller');
+const controller = require('./auth.controller');
+const authMiddleware = require('../../../middlewares/auth');
 
-router.get('/', controller.check);
+router.post('/signup', controller.postSignUp);
+router.post('/signin', controller.postSignIn);
 
-// router.get('/list', controller.list);
-// router.post('/assign-admin/:username', controller.assignAdmin);
+router.use('/orderlist', authMiddleware);
+router.get('/orderlist', controller.getOrderList);
 
 module.exports = router;

@@ -128,3 +128,15 @@ exports.postSignIn = (req, res) => {
   // find the user
   User.findOneByUsername(username).then(check).then(respond).catch(onError);
 };
+
+/*
+    GET /api/user/orderlist
+*/
+
+exports.getOrderList = (req, res) => {
+  console.log('do something here');
+  // respond to the client
+  res.json({
+    message: 'success',
+  });
+};

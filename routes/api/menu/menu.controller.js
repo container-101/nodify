@@ -6,7 +6,6 @@
 */
 
 exports.getMenuList = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   // respond to the client
   res.json({
@@ -22,7 +21,6 @@ exports.getMenuList = (req, res) => {
 */
 
 exports.postOrder = (req, res) => {
-  console.log(req, res);
   console.log('do something here');
   // respond to the client
   res.json({
