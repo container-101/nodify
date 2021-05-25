@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const stylus = require('stylus');
+const passport = require('passport');
 const mongoose = require('mongoose');
 
 // Load Routers
@@ -13,14 +14,19 @@ const apiRouter = require('./routes/api');
 
 // Load Configs
 const config = require('./config');
+const passportConfig = require('./passport');
 
 // Init Express App
 const app = express();
+passportConfig();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// MiddleWares
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -8,6 +8,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
     "core-js": "^3.12.1",
     "crypto": "^1.0.1",
@@ -17,6 +18,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.10",
     "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
     "pug": "^3.0.2",
     "stylus": "^0.54.8"
   },

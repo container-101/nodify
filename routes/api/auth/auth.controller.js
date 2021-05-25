@@ -12,7 +12,6 @@ const User = require('../../../models/user');
 exports.register = (req, res) => {
   const { username, password } = req.body;
   let newUser = null;
-  console.log(username, password);
 
   // create a new user if does not exist
   const create = (user) => {
@@ -74,6 +73,11 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
   const { username, password } = req.body;
   const secret = req.app.get('jwt-secret');
+  const options = {
+    expiresIn: '7d',
+    issuer: 'caupizza.com',
+    subject: 'userInfo',
+  };
 
   // check the user info & generate the jwt
   const check = (user) => {
@@ -92,11 +96,7 @@ exports.login = (req, res) => {
               admin: user.admin,
             },
             secret,
-            {
-              expiresIn: '7d',
-              issuer: 'woodi.com',
-              subject: 'userInfo',
-            },
+            options,
             (err, token) => {
               if (err) reject(err);
               resolve(token);
