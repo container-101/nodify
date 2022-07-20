@@ -1,18 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const crypto = require('crypto');
-const config = require('../config');
 
 const User = new Schema({
   username: String,
   password: String,
-  admin: { type: Boolean, default: false },
 });
 
 // create new User document
 User.statics.create = function (username, password) {
   const encrypted = crypto
-    .createHmac('sha1', config.secret)
+    .createHmac('sha1', process.env.JWT_SECRET)
     .update(password)
     .digest('base64');
 
@@ -35,7 +33,7 @@ User.statics.findOneByUsername = function (username) {
 // verify the password of the User documment
 User.methods.verify = function (password) {
   const encrypted = crypto
-    .createHmac('sha1', config.secret)
+    .createHmac('sha1', process.env.JWT_SECRET)
     .update(password)
     .digest('base64');
 

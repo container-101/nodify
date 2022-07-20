@@ -1,17 +1,15 @@
 const jwt = require('jsonwebtoken');
-const User = require('../../../models/user');
+const User = require('../../models/user');
 
-/*
-    POST /api/user/signup
-    {
-        username,
-        password
-    }
-*/
+exports.check = (req, res) => {
+  return res.json({
+    success: true,
+    info: req.decoded,
+  });
+};
 
 exports.postSignUp = (req, res) => {
   const { username, password } = req.body;
-  let newUser = null;
 
   // create a new user if does not exist
   const create = (user) => {
@@ -22,27 +20,10 @@ exports.postSignUp = (req, res) => {
     }
   };
 
-  // count the number of the user
-  const count = (user) => {
-    newUser = user;
-    return User.count({}).exec();
-  };
-
-  // assign admin if count is 1
-  const assign = (count) => {
-    if (count === 1) {
-      return newUser.assignAdmin();
-    } else {
-      // if not, return a promise that returns false
-      return Promise.resolve(false);
-    }
-  };
-
   // respond to the client
-  const respond = (isAdmin) => {
+  const respond = () => {
     res.json({
       message: 'registered successfully',
-      admin: isAdmin ? true : false,
     });
   };
 
@@ -54,29 +35,15 @@ exports.postSignUp = (req, res) => {
   };
 
   // check username duplication
-  User.findOneByUsername(username)
-    .then(create)
-    .then(count)
-    .then(assign)
-    .then(respond)
-    .catch(onError);
+  User.findOneByUsername(username).then(create).then(respond).catch(onError);
 };
-
-/*
-    POST /api/user/signin
-    {
-        username,
-        password
-    }
-*/
 
 exports.postSignIn = (req, res) => {
   const { username, password } = req.body;
   const secret = req.app.get('jwt-secret');
   const options = {
-    expiresIn: '7d',
-    issuer: 'caupizza.com',
-    subject: 'userInfo',
+    expiresIn: 60 * 60 * 24,
+    issuer: 'cnt101',
   };
 
   // check the user info & generate the jwt
