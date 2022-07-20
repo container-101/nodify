@@ -5,7 +5,8 @@
   "author": "woodi97",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=develop node app.js"
+    "start": "node app.js",
+    "dev": "nodemon --watch routes/ app.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -19,7 +20,7 @@
     "express-session": "^1.17.3",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.5",
+    "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-kakao": "^1.0.1",

@@ -9,13 +9,10 @@ const path = require('path');
 const http = require('http');
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  dotenv.config({ path: path.join(__dirname, '.env.production') });
-} else if (process.env.NODE_ENV === 'develop') {
-  dotenv.config({ path: path.join(__dirname, '.env.develop') });
-}
+dotenv.config();
+const config = require('./config');
 
-const indexRouter = require('./routes');
+const apiRouter = require('./routes');
 
 app.use(
   session({
@@ -34,10 +31,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.set('jwt-secret', process.env.JWT_SECRET);
-app.use('/api', indexRouter);
+app.set('jwt-secret', config.jwtSecret);
+app.use('/api', apiRouter);
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(config.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
